@@ -13,10 +13,15 @@ public class Sorter {
         System.out.println("Insertion Sort Array");
         insertionSort(nums);
         printArray(nums);
-        
+        System.out.println("Sort method that calls insertion Sort method");
+        sort(nums);
+        printArray(nums);
     }
 
-    
+    public static void sort(int[] array) {
+        insertionSort(array);
+    }
+
 
     public static void insertionSort(int[] array) {
         int n = array.length;
