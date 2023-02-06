@@ -1,33 +1,47 @@
-import java.util.ArrayList;
-import java.util.Collections;
 
 public class Sorter {
     public static void main(String[] args) {
         int[] nums = new int[30];
         for (int i = 0; i < nums.length; i++) {
-            nums[i] = (int)(Math.random() * 30);
-            System.out.print(nums[i] + " ");
+            nums[i] = (int)(Math.round(Math.random() * 100));
         }
-        System.out.println("");
-        nums = doSelectionSort(nums);
-        for (int i = 0; i < nums.length; i++) {
-            System.out.print(nums[i] + " ");
+        System.out.println("Original Array");
+        printArray(nums);
+        System.out.println("Selection Sort Array");
+        selectionSort(nums);
+        printArray(nums);
+        System.out.println("Insertion Sort Array");
+        //write function here please Hamaza
+        printArray(nums);
+    }
+
+    public static void selectionSort(int arr[])
+    {
+        int n = arr.length;
+ 
+        // One by one move boundary of unsorted subarray
+        for (int i = 0; i < n-1; i++)
+        {
+            // Find the minimum element in unsorted array
+            int min_idx = i;
+            for (int j = i+1; j < n; j++)
+                if (arr[j] < arr[min_idx])
+                    min_idx = j;
+ 
+            // Swap the found minimum element with the first
+            // element
+            int temp = arr[min_idx];
+            arr[min_idx] = arr[i];
+            arr[i] = temp;
         }
     }
-    public static int[] doSelectionSort(int[] arr) {
-        for (int i = 0; i < arr.length - 1; i++) {
-            int pos = i;
-            // find position of smallest num between (i + 1)th element and last element
-            for (int j = i + 1; j < arr.length; j++) {
-                if (arr[j] < arr[pos])
-                    pos = j;
-    
-                // Swap min (smallest num) to current position on array
-                int min = arr[pos];
-                arr[pos] = arr[i];
-                arr[i] = min;
-            }
-        }
-        return arr;
+ 
+    // Prints the array
+    public static void printArray(int arr[])
+    {
+        int n = arr.length;
+        for (int i=0; i<n; ++i)
+            System.out.print(arr[i]+" ");
+        System.out.println();
     }
 }
